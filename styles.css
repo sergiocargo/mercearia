@@ -1,26 +1,24 @@
-* {
-    padding: 0;
-    margin: 0;
+/** {
+    padding: 10px;
+    margin: 10px;
     box-sizing: border-box;
-    font-family: helvetica;
+    font-family: helvetica;    
 }
 
-/*Cabecalho*/
+Cabecalho
 head {
-    background-color: #3bd36b;
+    background-color: aliceblue;
     color: aliceblue;
     padding: 16x;
     text-align: center;
-    border-bottom: #09a53a;
-
-}
- /*
+    border-bottom: aliceblue;
+} 
 body {
-    background: color #f30404;
-
-   
+    background: color  aliceblue;   
 }
 body {
+    font-style:italic;
+    background-color: yellow;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;

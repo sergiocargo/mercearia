@@ -12,15 +12,17 @@
 //const novaIdade = anoAtual - novoanoNascimento
 //console.log(novaIdade)
 //concatenacao isso e quando uma coisa se junta com outra 
+//coercao de tipos
 
 const anoAtual = 2024
-const anoNascimento = 1965
+const anoNascimento = 1964
 const idade = anoAtual - anoNascimento
 const nome = 'Sergio'
 
 const frase = 'Meu nome '+ nome +' e tenho '+ idade +' anos.'
 
 console.log (frase)
+
 
 
 
