@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazar e Utilidades - Mercearia Santa Jeanne D'Arc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* =================== RESET =================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #D2691E;
+            color: #fff;
+        }
+
+        /* =================== NAVBAR =================== */
+        .navbar {
+            background: #A0522D;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .mercearia {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .menu a,
+        .dropbtn {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 14px;
+            border-radius: 6px;
+            transition: 0.3s;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .menu a:hover,
+        .dropbtn:hover {
+            background: linear-gradient(45deg, #DAA520, #B8860B);
+            color: #fff;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #A0522D;
+            min-width: 180px;
+            border-radius: 6px;
+            top: 40px;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background: #B8860B;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* =================== HERO =================== */
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+
+        .hero-subtitulo {
+            font-size: 18px;
+            color: #f5f5dc;
+        }
+
+        /* =================== CARDS =================== */
+        .hero-cards {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .produto-card {
+            background: #BDB76B;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding-bottom: 10px;
+        }
+
+        .produto-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .produto-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .produto-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .produto-card h3 {
+            margin: 10px 0 5px;
+            color: #fff;
+        }
+
+        .produto-card p {
+            font-size: 14px;
+            color: #f0f0f0;
+        }
+
+        /* =================== RESPONSIVIDADE CARDS =================== */
+        @media (max-width: 1200px) {
+            .hero-cards {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* =================== FOOTER =================== */
+        footer {
+            background: #A0522D;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: stretch;
+            padding: 0;
+        }
+
+        .footer-info {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .footer-text p {
+            margin-bottom: 5px;
+        }
+
+        .footer-social {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .social-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a i {
+            font-size: 32px;
+            transition: transform 0.3s;
+        }
+
+        /* Cores originais dos ícones */
+        .footer-social a.whatsapp i {
+            color: #25D366;
+        }
+
+        .footer-social a.email i {
+            color: #D44638;
+        }
+
+        .footer-social a.instagram i {
+            color: #E1306C;
+        }
+
+        .footer-social a.facebook i {
+            color: #1877F2;
+        }
+
+        .footer-social a i:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-map iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 200px;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        /* =================== RESPONSIVIDADE FOOTER =================== */
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <span class="mercearia">Mercearia Santa Jeanne D'Arc</span>
+        <div class="menu">
+            <a href="index.html" class="home">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">Categorias</button>
+                <div class="dropdown-content">
+                    <a href="bebidas.html">Bebidas</a>
+                    <a href="carnes.html">Carnes</a>
+                    <a href="padaria.html">Padaria</a>
+                    <a href="frutas-verduras.html">Frutas e Verduras</a>
+                    <a href="biscoitos.html">Biscoitos e Chocolates</a>
+                    <a href="congelados.html">Congelados</a>
+                    <a href="frios.html">Frios e Laticínios</a>
+                    <a href="limpeza.html">Limpeza</a>
+                    <a href="perfumaria.html">Perfumaria e Higiene</a>
+                    <a href="pet.html">Pet</a>
+                    <a href="matinais.html">Matinais e Sobremesa</a>
+                    <a href="pao_quente.html">Pão Quente</a>
+                    <a href="bazar.html">Bazar e Utilidades</a>
+                    <a href="outras.html">Outras</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="categoria">
+        <div class="hero-conteudo">
+            <h1>Bazar e Utilidades</h1>
+            <p class="hero-subtitulo">Aqui você encontra todos os tipos de utilidades para sua casa!</p>
+        </div>
+
+        <div class="hero-cards">
+            <!-- 14 cards -->
+            <div class="produto-card"><img src="assets/bazar/img1.jpg">
+                <h3>Kit 1</h3>
+                <p>Descrição do produto</p>
+            </div>
+            <div class="produto-card"><img src="assets/bazar/img2.jpg">
+                <h3>Kit 2</h3>
+                <p>Descrição do produto</p>
+            </div>
+            <div class="produto-card"><img src="assets/bazar/img3.jpg">
+                <h3>Kit 3</h3>
+                <p>Descrição do produto</p>
+            </div>
+            <div class="produto-card"><img src="assets/bazar/img4.jpg">
+                <h3>Kit 4</h3>
+                <p>Descrição do produto</p>
+            </div>
+            <div class="produto-card"><img src="assets/bazar/img5.jpg">
+                <h3>Kit 5</h3>
+                <p>Descrição do produto</p>
+            </div>
+            <div class="produto-card"><img src="assets/bazar/img6.jpg">
+                <h3>Kit 6</h3>
+                <p>Descrição do produto</p>
+            </div>
+            <div class="produto-card"><img src="assets/bazar/img7.jpg">
+                <h3>Kit 7</h3>
+                <p>Descrição do produto</p>
+            </div>
+            <div class="produto-card"><img src="assets/bazar/img8.jpg">
+                <h3>Kit 8</h3>
+                <p>Descrição do produto</p>
+            </div>
+            <div class="produto-card"><img src="assets/bazar/img9.jpg">
+                <h3>Kit 9</h3>
+                <p>Descrição do produto</p>
+            </div>
+            <div class="produto-card"><img src="assets/bazar/img10.jpg">
+                <h3>Kit 10</h3>
+                <p>Descrição do produto</p>
+            </div>
+            <div class="produto-card"><img src="assets/bazar/img11.jpg">
+                <h3>Kit 11</h3>
+                <p>Descrição do produto</p>
+            </div>
+            <div class="produto-card"><img src="assets/bazar/img12.jpg">
+                <h3>Kit 12</h3>
+                <p>Descrição do produto</p>
+            </div>
+            <div class="produto-card"><img src="assets/bazar/img13.jpg">
+                <h3>Kit 13</h3>
+                <p>Descrição do produto</p>
+            </div>
+            <div class="produto-card"><img src="assets/bazar/img14.jpg">
+                <h3>Kit 14</h3>
+                <p>Descrição do produto</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER ORGANIZADO EM 2 CARDS -->
+    <!-- FOOTER ORGANIZADO -->
+    <footer>
+        <div class="footer-container">
+            <!-- Card de informações -->
+            <div class="footer-info">
+                <div class="footer-text">
+                    <p>© Sergio 2025 - Mercearia Santa Jeanne D'Arc | Feito com carinho ❤️</p>
+                    <p>Endereço: Rua Santa Clara, 579, São José dos Campos - SP</p>
+                </div>
+                <!-- Card de ícones sociais -->
+                <div class="footer-social">
+                    <a href="https://wa.me/SEUNUMERO" target="_blank" title="WhatsApp">
+                        <i class="fab fa-whatsapp whatsapp"></i>
+                    </a>
+                    <a href="mailto:seuemail@dominio.com" title="Email">
+                        <i class="fas fa-envelope email"></i>
+                    </a>
+                    <a href="https://www.instagram.com/seuperfil" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/seuperfil" target="_blank" title="Facebook">
+                        <i class="fab fa-facebook-f facebook"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mapa abaixo de ambos -->
+            <div class="footer-map">
+                <iframe src="https://www.google.com/maps?q=Rua+Santa+Clara,+579,+São+José+dos+Campos,+SP&output=embed"
+                    allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
