@@ -1,72 +1,234 @@
-/* ================= FOOTER CSS COMPLETO ================= */
-
-/* FOOTER CONTAINER */
-.footer-container {
-  display: flex;
-  gap: 20px;
-  padding: 40px 20px;
-  background: #A0522D;
-  color: #070707;
-  flex-wrap: wrap;
-  justify-content: center;
+/* =================== RESET =================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-/* CARD ESTILOS */
-.footer-card {
-  background: rgba(255,255,255,0.05);
+body {
+  background-color: #D2691E;
+  color: #fff;
+}
+
+/* =================== NAVBAR =================== */
+.navbar {
+  background: #A0522D;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .mercearia {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.menu a,
+.dropbtn {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: 0.3s;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.menu a:hover,
+.dropbtn:hover {
+  background: linear-gradient(45deg, #DAA520, #B8860B);
+  color: #fff;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: #A0522D;
+  min-width: 180px;
+  border-radius: 6px;
+  top: 40px;
+  left: 0;
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background: #B8860B;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* =================== HERO =================== */
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #0f0f0f;
+}
+
+.hero-subtitulo {
+  font-size: 18px;
+  color: #f5f5dc;
+}
+
+/* =================== CARDS =================== */
+.hero-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
   padding: 20px;
+}
+
+.produto-card {
+  background: #BDB76B;
   border-radius: 12px;
-  flex: 1 1 400px; /* flexível e responsivo */
+  overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 300px; /* mesma altura para todos */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.footer-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+.produto-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-/* INFORMAÇÕES */
-.footer-info p {
-  margin: 5px 0;
-  font-size: 16px;
+.produto-card h3 {
+  margin: 10px 0 5px;
+  color: #fa0404;
+  text-align: center;
 }
 
-/* SOCIAL + MAPA */
-.footer-social-card {
+.produto-card p {
+  font-size: 14px;
+  color: #000;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.produto-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.produto-card:hover img {
+  transform: scale(1.05);
+}
+
+/* =================== RESPONSIVO CARDS =================== */
+@media (max-width: 1200px) {
+  .hero-cards {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-cards {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =================== FOOTER =================== */
+footer {
+  background: #A0522D;
+  padding: 40px 20px;
+  margin-top: 50px;
+  color: #fff;
+}
+
+.footer-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 20px;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-/* Ícones sociais */
+.footer-info, .footer-map {
+  flex: 1;
+  min-width: 280px;
+}
+
+.footer-info {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between; /* texto e icones ficam nas extremidades */
+    align-items: center; /* centraliza verticalmente */
+    gap: 15px;
+    min-width: 280px;
+    min-height: 204px; /* mantém altura igual */
+}
+
+.footer-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
 .footer-social {
-  display: flex;
-  justify-content: flex-start;
-  gap: 15px;
+    display: flex;
+    gap: 15px;
+    align-items: center; /* centraliza ícones verticalmente */
 }
 
 .footer-social a i {
-  font-size: 32px;
+  font-size: 28px;
   transition: transform 0.3s;
-  cursor: pointer;
-  padding: 5px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.1);
 }
 
-.footer-social a i:hover { 
-  transform: scale(1.2); 
-  background: rgba(255,255,255,0.2);
+.footer-social a .fa-whatsapp { color: #25D366; }
+.footer-social a .fa-envelope { color: #D44638; }
+.footer-social a .fa-instagram { color: #E1306C; }
+.footer-social a .fa-facebook-f { color: #1877F2; }
+
+.footer-social a i:hover {
+  transform: scale(1.2);
 }
 
-/* cores dos ícones */
-.footer-social a.whatsapp i { color: #03f35b; }
-.footer-social a.email i { color: #D44638; }
-.footer-social a.instagram i { color: #c40a0a; }
-.footer-social a.facebook i { color: #1877F2; }
-
-/* MAPA */
 .footer-map iframe {
   width: 100%;
   height: 200px;
@@ -75,21 +237,17 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-/* RESPONSIVO */
-@media (max-width: 1024px) {
+/* RESPONSIVO FOOTER */
+@media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
   }
-  .footer-card {
-    flex: 1 1 100%;
-  }
-}
 
-@media (max-width: 480px) {
-  .footer-info p {
-    font-size: 14px;
+  .footer-info, .footer-map {
+    min-height: auto;
   }
-  .footer-social a i {
-    font-size: 28px;
+
+  .footer-social {
+    margin-top: 10px;
   }
 }
